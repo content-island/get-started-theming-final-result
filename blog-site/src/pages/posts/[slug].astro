@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPosts } from './post.api';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map(post => ({
+    params: { slug: post.title.toLowerCase().replace(/\s+/g, '-') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout>
+  <article>
+    <h1>{post.title}</h1>
+    <p><strong>Date:</strong> {post.date}</p>
+    <p><strong>Author:</strong> {post.author}</p>
+    <img src={post.image} alt={post.title} width="800" />
+    <p><strong>Summary:</strong> {post.summary}</p>
+    <div>
+      <strong>Content:</strong>
+      <p>{post.content}</p>
+    </div>
+  </article>
+</Layout>

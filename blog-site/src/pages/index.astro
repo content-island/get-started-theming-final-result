@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { getPosts } from './posts/post.api';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const posts = await getPosts();
 ---
 
 <Layout>
-	<Welcome />
+  <h1>Welcome to Astro Blog</h1>
+  <a href="/about">About</a>
+  <p>Latest posts:</p>
+
+  <ul>
+    {
+      posts.map(post => (
+        <li>
+          <h2>
+            <a href={`/posts/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>{post.title}</a>
+          </h2>
+          <p>
+            <strong>Author:</strong> {post.author}
+          </p>
+          <p>{post.summary}</p>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
