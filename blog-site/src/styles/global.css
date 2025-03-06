@@ -54,6 +54,11 @@ body {
   min-height: 100vh;
   color: var(--text-color);
 }
+
+main {
+  flex: 1;
+}
+
 .container {
   width: 90%;
   max-width: 1200px;
