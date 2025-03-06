@@ -1,6 +1,10 @@
 export interface About {
-  picture: string;
+  id: string;
+  picture: {
+    name: string;
+    link: string;
+  };
   fullname: string;
-  shortbio: string;
+  shortBio: string;
   extendedBio: string;
 }

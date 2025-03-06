@@ -18,7 +18,7 @@ const { post } = Astro.props;
     <h1>{post.title}</h1>
     <p><strong>Date:</strong> {post.date}</p>
     <p><strong>Author:</strong> {post.author}</p>
-    <img src={post.image} alt={post.title} width="800" />
+    <img src={post.image.link} alt={post.title} width="800" />
     <p><strong>Summary:</strong> {post.summary}</p>
     <div>
       <strong>Content:</strong>
