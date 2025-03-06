@@ -9,7 +9,7 @@ export async function getPosts(): Promise<SinglePost[]> {
   });
 
   const posts = response.map(content => mapContentToModel<SinglePost>(content));
-  console.log(posts);
+
   return posts;
   // return [
   //   {
