@@ -10,16 +10,16 @@ const aboutExtendedBio = marked(about.extendedBio || '');
 
 <Layout>
   <div class="container about">
-    <div class="about__intro">
+    <div class="about__header">
       <img src={about.picture.link} alt="" class="about__image" />
-      <div class="about__header">
+      <div class="about__intro">
         <h1>I'am, <br /> {about.fullname}</h1>
         <p>
           {about.shortBio}
         </p>
       </div>
     </div>
-    <div set:html={aboutExtendedBio} class="about__content" />
+    <div set:html={aboutExtendedBio} class="about__bio" />
   </div>
 
   <!-- <h1>About</h1>
@@ -37,7 +37,7 @@ const aboutExtendedBio = marked(about.extendedBio || '');
     gap: var(--space-lg);
   }
 
-  .about__intro {
+  .about__header {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
@@ -45,12 +45,12 @@ const aboutExtendedBio = marked(about.extendedBio || '');
   }
 
   @media screen and (min-width: 768px) {
-    .about__intro {
+    .about__header {
       flex-direction: row;
     }
   }
 
-  .about__header {
+  .about__intro {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
@@ -62,12 +62,12 @@ const aboutExtendedBio = marked(about.extendedBio || '');
       line-height: 1.1;
     }
     p {
-      max-width: 40ch;
-      font-size: var(--fs-lg);
+      max-width: 30ch;
+      font-size: var(--fs-md);
     }
   }
   @media screen and (min-width: 768px) {
-    .about__header {
+    .about__intro {
       padding-bottom: var(--space-md);
     }
   }
@@ -89,7 +89,7 @@ const aboutExtendedBio = marked(about.extendedBio || '');
       width: 30%;
     }
   }
-  .about__content {
+  .about__bio {
     max-width: 800px;
     margin-right: auto;
     margin-left: auto;

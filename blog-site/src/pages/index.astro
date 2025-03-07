@@ -17,15 +17,28 @@ const posts = await getPosts();
         posts.map(post => (
           <li>
             <article class="post">
-              <a href={`/posts/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
+              <a
+                href={`/posts/${post.title
+                  .toLowerCase()
+                  .trim()
+                  .replace(/[^a-z0-9\s-]/g, '')
+                  .replace(/\s+/g, '-')}`}
+              >
                 <img src={post.image.link} alt={post.image.name} class="post__image" />
               </a>
-              <div class="post__content">
+              <div class="post__text">
                 <div class="post__header">
                   <p class="post__date">
                     <time datetime="2025-03-05">{post.date}</time>
                   </p>
-                  <a href={`/posts/${post.title.toLowerCase().replace(/\s+/g, '-')}`} class="post__title">
+                  <a
+                    href={`/posts/${post.title
+                      .toLowerCase()
+                      .trim()
+                      .replace(/[^a-z0-9\s-]/g, '')
+                      .replace(/\s+/g, '-')}`}
+                    class="post__title"
+                  >
                     <h2>{post.title}</h2>
                   </a>
                 </div>
@@ -86,11 +99,14 @@ const posts = await getPosts();
   .post__image {
     width: 100%;
     object-fit: cover;
+    object-position: top;
     aspect-ratio: 16/9;
     border-radius: var(--border-radius);
   }
-  .post__content > * + * {
-    margin-top: var(--space-2xs);
+  .post__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
   }
 
   .post__header {

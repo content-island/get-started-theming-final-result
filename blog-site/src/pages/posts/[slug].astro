@@ -2,12 +2,26 @@
 import { marked } from 'marked';
 import Layout from '../../layouts/Layout.astro';
 import { getPosts } from './post.api';
-import type { url } from 'inspector';
+import hljs from 'highlight.js';
+
+const renderer = new marked.Renderer();
+renderer.code = ({ text, lang }) => {
+  const highlighted = hljs.highlightAuto(text).value;
+  return `<pre><code class="hljs ${lang}">${highlighted}</code></pre>`;
+};
+
+marked.setOptions({ renderer });
 
 export async function getStaticPaths() {
   const posts = await getPosts();
   return posts.map(post => ({
-    params: { slug: post.title.toLowerCase().replace(/\s+/g, '-') },
+    params: {
+      slug: post.title
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-'),
+    },
     props: { post },
   }));
 }
@@ -54,8 +68,9 @@ const postImage = `url(${post.image.link})`;
     top: 0;
     left: 0;
     width: 100%;
-    height: 22%;
+    height: 360px;
     background-image: var(--postImage);
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
   }
@@ -83,13 +98,25 @@ const postImage = `url(${post.image.link})`;
   .article__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-  }
+    gap: var(--space-sm);
 
-  .article__image {
-    width: 100%;
-    object-fit: cover;
-    aspect-ratio: 16/9;
-    border-radius: var(--border-radius);
+    h2 {
+      margin-top: var(--space-sm);
+    }
+    ul {
+      padding-left: var(--space-md);
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 21/9;
+      border-radius: var(--border-radius);
+    }
+
+    code {
+      font-size: var(--fs-xs);
+      border-radius: var(--border-radius);
+      padding: var(--space-xs);
+    }
   }
 </style>
