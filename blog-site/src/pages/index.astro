@@ -3,6 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import { getPosts } from './posts/post.api';
 
 const posts = await getPosts();
+
+const date = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 ---
 
 <Layout>
@@ -29,7 +36,7 @@ const posts = await getPosts();
               <div class="post__text">
                 <div class="post__header">
                   <p class="post__date">
-                    <time datetime="2025-03-05">{post.date}</time>
+                    <time datetime="2025-03-05">{date(post.date)}</time>
                   </p>
                   <a
                     href={`/posts/${post.title

@@ -29,6 +29,12 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const postContent = marked(post.content || '');
+const postDate = new Date(post.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
 const postImage = `url(${post.image.link})`;
 ---
 
@@ -48,7 +54,7 @@ const postImage = `url(${post.image.link})`;
     <article class="article">
       <header class="article__header">
         <p>
-          <time datetime="2025-03-05">{post.date}</time>
+          <time datetime="2025-03-05">{postDate}</time>
         </p>
         <h1 class="article__title">{post.title}</h1>
       </header>
