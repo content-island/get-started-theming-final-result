@@ -6,8 +6,9 @@ import hljs from 'highlight.js';
 
 const renderer = new marked.Renderer();
 renderer.code = ({ text, lang }) => {
-  const highlighted = hljs.highlightAuto(text).value;
-  return `<pre><code class="hljs ${lang}">${highlighted}</code></pre>`;
+  const validLang = hljs.getLanguage(lang || 'plaintext') ? lang || 'plaintext' : 'plaintext';
+  const highlighted = hljs.highlight(text, { language: validLang }).value;
+  return `<pre><code class="hljs ${validLang}">${highlighted}</code></pre>`;
 };
 
 marked.setOptions({ renderer });
