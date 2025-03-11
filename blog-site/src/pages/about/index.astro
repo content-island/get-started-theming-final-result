@@ -1,5 +1,6 @@
 ---
 import { marked } from 'marked';
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import { getAbout } from './about.api.ts';
 
@@ -11,7 +12,7 @@ const aboutExtendedBio = marked(about.extendedBio || '');
 <Layout>
   <div class="container about">
     <div class="about__header">
-      <img src={about.picture.link} alt="" class="about__image" />
+      <Image src={about.picture.link} alt={about.picture.name} width={100} height={200} class:list="about__image" />
       <div class="about__intro">
         <h1>I'am, <br /> {about.fullname}</h1>
         <p>
@@ -41,12 +42,12 @@ const aboutExtendedBio = marked(about.extendedBio || '');
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    align-items: flex-end;
   }
 
   @media screen and (min-width: 768px) {
     .about__header {
       flex-direction: row;
+      align-items: flex-end;
     }
   }
 
@@ -74,6 +75,7 @@ const aboutExtendedBio = marked(about.extendedBio || '');
 
   .about__image {
     width: 100%;
+    height: auto;
     object-fit: cover;
     aspect-ratio: 16/9;
     border-radius: var(--border-radius);
