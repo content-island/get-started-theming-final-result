@@ -32,13 +32,12 @@
   .menu__item {
     color: var(--text-color-light);
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
   }
-  .menu__item:hover {
-    color: var(--secondary-color);
-  }
-
-  .menu__item.active {
-    color: var(--secondary-color);
+  .menu__item:hover,
+  .menu__item:active,
+  .menu__item:focus {
+    color: var(--menu-hover-color);
   }
 
   .menu__right {
