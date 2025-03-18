@@ -3,13 +3,11 @@ import client from '../../lib/client';
 import type { About } from './about.model';
 
 export async function getAbout(): Promise<About> {
-  const AboutContentCollection = await client.getContentList({
+  const AboutContentCollection = await client.getContent('67c9817f98e17b1396f20d0f', {
     contentType: 'About',
   });
 
-  const legalContentModelCollection = AboutContentCollection.map(content => mapContentToModel<About>(content));
-
-  return legalContentModelCollection[0];
+  return mapContentToModel<About>(AboutContentCollection);
   // return {
   //   picture: "https://picsum.photos/200",
   //   fullname: "John Doe",

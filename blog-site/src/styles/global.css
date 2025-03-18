@@ -1,15 +1,17 @@
 :root {
   --primary-color: #1d3353;
-  --secondary-color: #fff;
-  --border-color: #333;
   --pure-white: #fff;
 
   /*text colors*/
   --text-color: #333;
-  --text-color-light: #fff;
+  --text-color-light: var(--pure-white);
 
-  /*title hover color*/
-  --title-hover-color: #033378;
+  /*hover colors*/
+  --title-hover-color: hsl(from var(--primary-color) h calc(s + 20) calc(l + 10));
+  --menu-hover-color: hsl(from var(--primary-color) h calc(s + 20) calc(l + 63));
+
+  /*border colors*/
+  --border-color: #333;
 
   /*font family*/
   --ff-title: 'IBM Plex Sans Condensed', sans-serif;
