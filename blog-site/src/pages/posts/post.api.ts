@@ -1,4 +1,3 @@
-import { map } from 'astro:schema';
 import client from '../../lib/client';
 import type { SinglePost } from './post.model';
 import { mapContentToModel } from '@content-island/api-client';
