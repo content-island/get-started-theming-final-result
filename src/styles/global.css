@@ -1,6 +1,8 @@
 :root {
   --primary-color: #1d3353;
   --pure-white: #fff;
+  --font-name-body: 'IBM Plex Sans';
+  --font-name-title: 'IBM Plex Sans Condensed';
 
   /*text colors*/
   --text-color: #333;
@@ -14,8 +16,8 @@
   --border-color: #333;
 
   /*font family*/
-  --ff-title: 'IBM Plex Sans Condensed', sans-serif;
-  --ff-body: 'IBM Plex Sans', sans-serif;
+  --ff-title: var(--font-name-title), sans-serif;
+  --ff-body: var(--font-name-body), sans-serif;
 
   /*font sizes*/
   --fs-2xs: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
