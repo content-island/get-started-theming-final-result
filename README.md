@@ -1,5 +1,9 @@
 # get-started-blog-post-final-result
 
+Full implementation of the blog post from the Content Island Get Started guide:
+
+https://docs.contentisland.net/get-started/astro/
+
 Steps to run the project:
 
 # 1. Add the environment variable `CONTENT_ISLAND_API_KEY` to your `.env` file with your Content Island API key.
