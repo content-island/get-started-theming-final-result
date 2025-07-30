@@ -25,15 +25,9 @@ const date = (date: string) =>
         posts.map(post => (
           <li>
             <article class="post">
-              <a
-                href={`/posts/${post.title
-                  .toLowerCase()
-                  .trim()
-                  .replace(/[^a-z0-9\s-]/g, '')
-                  .replace(/\s+/g, '-')}`}
-              >
+              <a href={`/posts/${post.slug}`}>
                 <Image
-                  src={post.image.link}
+                  src={post.image.url}
                   alt={post.image.name}
                   width={250}
                   height={100}

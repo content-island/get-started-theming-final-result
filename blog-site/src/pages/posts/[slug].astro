@@ -17,11 +17,7 @@ export async function getStaticPaths() {
   const posts = await getPosts();
   return posts.map(post => ({
     params: {
-      slug: post.title
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/\s+/g, '-'),
+      slug: post.slug,
     },
     props: { post },
   }));
@@ -40,17 +36,6 @@ const postImage = `url(${post.image.link})`;
 ---
 
 <Layout>
-  <!-- <article>
-    <h1>{post.title}</h1>
-    <p><strong>Date:</strong> {post.date}</p>
-    <p><strong>Author:</strong> {post.author}</p>
-    <img src={post.image.link} alt={post.title} width="800" />
-    <p><strong>Summary:</strong> {post.summary}</p>
-    <div>
-      <strong>Content:</strong>
-      <p>{post.content}</p>
-    </div>
-  </article> -->
   <div class="container background">
     <article class="article">
       <header class="article__header">
