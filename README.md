@@ -1,6 +1,6 @@
 # get-started-blog-post-final-result
 
-Full implementation of the blog post from the Content Island Get Started guide:
+Full implementation of the blog post from the Content Island Themeing guide:
 
 https://docs.contentisland.net/get-started/astro/
 
@@ -8,10 +8,10 @@ Steps to run the project:
 
 # 1. Add the environment variable `CONTENT_ISLAND_API_KEY` to your `.env` file with your Content Island API key.
 
-_./blog-site/.env_
+_./.env_
 
 ```bash
-CONTENT_ISLAND_API_KEY=55e5a31cc5573948d5c08b9902fd135d
+CONTENT_ISLAND_API_KEY=ff9e53ad3e0f6d060a8a1f6493da707c
 ```
 
 # 2. Install the dependencies.

@@ -3,5 +3,5 @@ import client from '../../lib/client';
 import type { About } from './about.model';
 
 export async function getAbout(): Promise<About> {
-  return await client.getContent<About>({ id: '685eb36e45767b0f312fce64' });
+  return await client.getContent<About>({ id: '6889fee44e051d2bea7eaecb' });
 }
